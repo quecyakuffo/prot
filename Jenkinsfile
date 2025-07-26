@@ -48,7 +48,7 @@ pipeline {
       }
     }
 }
-      stage('Sonar Analysis') {
+  stage('Sonar Analysis') {
             environment {
                 scannerHome = tool "${SONARSCANNER}"
             }
@@ -66,4 +66,4 @@ pipeline {
             }
         }
     }
-}
+}  
