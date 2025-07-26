@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-         maven "MAVEN3.9"
+        maven "MAVEN3.9"
         jdk "JDK17"
 
     }
@@ -63,9 +63,8 @@ pipeline {
               }
             }
         }
-    }
-}
-stage("Quality Gate") {
+
+        stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
