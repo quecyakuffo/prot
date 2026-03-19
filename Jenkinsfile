@@ -87,11 +87,11 @@ pipeline {
                 }
             }
         }
-       stage('Remove Container Images') {
+        stage('Remove Container Images') {
             steps {
-                 sh 'docker rmi -f $(docker images -a -q)'
-                }
+                sh 'docker rmi -f $(docker images -a -q)'
             }
         }
+
     }
 }
