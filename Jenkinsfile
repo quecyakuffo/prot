@@ -87,9 +87,16 @@ pipeline {
                 }
             }
         }
-        stage('Remove Container Images') {
+        stage('Deploy to ECS') {
             steps {
-                sh 'docker rmi -f $(docker images -a -q)'
+                withAWS(credentials: 'awscreds', region: 'us-east-2') {
+                    sh '''
+                        aws ecs update-service --cluster vprofile123 \
+                            --service vprofileeappsvc \
+                            --task-definition vprofileeapptask \
+                            --force-new-deployment
+                    '''
+                }
             }
         }
 
